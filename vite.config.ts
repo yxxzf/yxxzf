@@ -1,13 +1,30 @@
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
+import { createSvgIconsPlugin } from 'vite-plugin-svg-icons'
 import path from 'path'
 
 // https://vite.dev/config/
 export default defineConfig({
-    plugins: [vue()],
+    plugins: [vue(),
+    // SVG图标配置
+    createSvgIconsPlugin({
+        // Specify the icon folder to be cached
+        iconDirs: [path.resolve(process.cwd(), 'src/assets/icons')],
+        // Specify symbolId format
+        symbolId: 'icon-[dir]-[name]',
+    }),
+    ],
     resolve: {
         alias: {
             '@': path.resolve(__dirname, './src') // 相对路径别名配置，使用 @ 代替 src
         }
-    }
+    },
+    css: {
+        preprocessorOptions: {
+            scss: {
+                javascriptEnabled: true,
+                additionalData: '@import "./src/styles/variable.scss";',
+            },
+        },
+    },
 })
