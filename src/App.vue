@@ -1,16 +1,15 @@
 <template>
-  <div>
-    <h1>我是APP</h1>
-    <el-button type="primary" :icon="Edit">主要按钮</el-button>
-    <h3>使用svg图标</h3>
-    <div>
-      <Svg-icon name="home" color="$base-menu-background"></Svg-icon>
-    </div>
-  </div>
+  <router-view></router-view>
 </template>
 
 <script setup lang="ts">
-import {Edit} from '@element-plus/icons-vue'
+// import {Edit} from '@element-plus/icons-vue'
+// import { reqLogin } from './api/user';
+import { onMounted } from 'vue';
+onMounted( ()=> {
+  // reqLogin({username: 'admin',password: '111111'});
+})
 </script>
 
-<style scoped></style>
+<style scoped lang="sass">
+</style>
