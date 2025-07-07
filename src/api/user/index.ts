@@ -4,7 +4,7 @@ import type { loginForm, loginFormData, loginResponseData } from './type'
 // @ts-expect-error
 enum API {
     LOGIN_URL = '/user/login',
-    USERINFO_URL = '/admin/acl/index/info',
+    USERINFO_URL = '/user/info',
     LOGOUT_URL = '/admin/acl/index/logout'
 }
 //登录接口

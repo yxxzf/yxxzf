@@ -12,7 +12,7 @@ export interface loginFormData {
     code: number,
     data: dataType
 }
-interface useInfo {
+export interface useInfo {
     userId: number,
     avatar: string,
     username: string,
@@ -22,6 +22,7 @@ interface useInfo {
     buttons: string[],
     routes: string[],
     token: string,
+    message?: ''
 }
 interface user {
     checkUser: useInfo

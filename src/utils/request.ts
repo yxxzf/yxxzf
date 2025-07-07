@@ -1,6 +1,7 @@
 // 进行axios的二次封装，利用它的请求与响应拦截器
 import axios from "axios";
 import { ElMessage } from "element-plus";
+import { GET_TOKEN } from "./token";
 //利用axios的create方法，创建axios实例（其他的配置）
 const request = axios.create({
     baseURL: import.meta.env.VITE_APP_BASE_API, // 基础请求路径带上api
@@ -10,7 +11,9 @@ const request = axios.create({
 request.interceptors.request.use(config => {
     // config配置对象，header属性请求头，给服务器携带公共参数
     // 返回配置对象
-    config.headers.loginToken = 'login-token'
+    if(GET_TOKEN()){
+        config.headers.token = GET_TOKEN();
+    }
     return config;
 });
 //响应拦截器

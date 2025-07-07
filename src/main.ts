@@ -14,6 +14,8 @@ import GloalComponent from '@/components/index';
 import router from './router';
 // 引入仓库
 import pinia from './store';
+// 引入路由鉴权
+import './permission'
 const app = createApp(App);
 
 app.use(ElementPlus, {
@@ -21,6 +23,7 @@ app.use(ElementPlus, {
 });
 app.use(router);
 app.use(pinia);
+
 app.use(GloalComponent);
 // console.log('import.meta.env: ', import.meta.env)
 app.mount('#app');

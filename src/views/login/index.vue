@@ -27,7 +27,7 @@
 import { reactive, ref } from 'vue';
 import { User, Lock } from '@element-plus/icons-vue';
 import { ElNotification } from 'element-plus';
-import { useRouter } from 'vue-router';
+import { useRoute, useRouter } from 'vue-router';
 // @ts-ignore
 import useUserStore from '@/store/moudules/user';
 // @ts-ignore
@@ -39,6 +39,7 @@ let loginForms = ref();
 let userStore = useUserStore();
 
 let $router = useRouter();
+let $route = useRoute()
 
 
 const validatorUserName = (rule: any, value: any, callback: any) => {
@@ -76,7 +77,9 @@ const login = async () => {
     //请求成功->首页展示数据的地方
     //请求失败->弹出登录失败信息
     userStore.login(loginForm).then(() => {
-        $router.push('/');
+        const redirect: any = $route.query.redirect
+        console.log(redirect)
+        $router.push({path: redirect || '/'});
         ElNotification({
             type: 'success',
             message: '欢迎回来！',
