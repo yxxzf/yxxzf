@@ -3,11 +3,11 @@
         <el-button size="small" icon="Refresh" circle @click="updateRefsh"></el-button>
         <el-button size="small" icon="FullScreen" circle @click="fullScreen"></el-button>
         <el-button size="small" icon="Setting" circle></el-button>
-        <img :src="useStore.user_info.avatar" alt="" style="height: 24px;width: 24px;margin: 0 10px; border-radius: 50%;">
+        <img :src="useStore.user_info.data?.avatar" alt="" style="height: 24px;width: 24px;margin: 0 10px; border-radius: 50%;">
         <!-- 下拉菜单 -->
         <el-dropdown>
             <span class="el-dropdown-link">
-                {{ useStore.user_info.username }}
+                {{ useStore.user_info.data?.name }}
                 <el-icon class="el-icon--right">
                     <arrow-down />
                 </el-icon>

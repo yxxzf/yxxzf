@@ -4,25 +4,25 @@ export interface loginForm {
     password: string
 }
 interface dataType {
-    token?: string,
+    code?: string,
     message?: string
+    ok?: boolean
 }
 // 登录接口返回数据类型
 export interface loginFormData {
     code: number,
-    data: dataType
+    data?: string,
+    message?: string
+    ok?: boolean
 }
-export interface useInfo {
-    userId: number,
-    avatar: string,
-    username: string,
-    password: string,
-    desc: string,
-    roles: string[],
-    buttons: string[],
-    routes: string[],
-    token: string,
-    message?: ''
+export interface useInfo extends dataType{
+    data:{
+        routes:string[],
+        buttons:string[],
+        roles:string[],
+        name:string,
+        avatar:string
+    }
 }
 interface user {
     checkUser: useInfo
