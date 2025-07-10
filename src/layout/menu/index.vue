@@ -1,4 +1,5 @@
 <template>
+    <!-- eslint-disable-next-line vue/no-multiple-template-root -->
     <template v-for="item in menuList">
         <!-- 没有子路由 -->
         <template v-if="!item.meta.hidden">

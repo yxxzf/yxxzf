@@ -33,8 +33,13 @@ router.beforeEach((to: any, from: any) => {
                     //用户手动修改本地存储token
                     //退出登录->用户相关的数据清空
                     console.log(error)
-                    userStore.userLogout()
-                    return ({ path: '/login', query: { redirect: to.path } })
+                    userStore.userLogout().then((res)=> {
+                        console.log(res)
+                        return ({ path: '/login', query: { redirect: to.path } })
+                    }).catch(error => {
+                        console.log(error)
+                        return false
+                    })
                 })
             }
         }

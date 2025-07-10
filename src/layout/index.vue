@@ -6,7 +6,7 @@
             <!-- 滚动组件 -->
             <el-scrollbar class="scrollBar">
                 <!-- 菜单组件 -->
-                <el-menu :default-active="$route.path" background-color="#000" text-color="#fff"
+                <el-menu :default-active="$route.path" background-color="#000" active-text-color="yellowgreen" text-color="#fff"
                     :collapse="layOutSettingStore.fold">
                     <Menu :menuList="userStore.userInfo.menuRoutes"></Menu>
                 </el-menu>
@@ -45,7 +45,7 @@ import { useRoute } from 'vue-router';
 const userStore = useUserStore();
 const layOutSettingStore = useLayOutSettingStore();
 const $route = useRoute();
-console.log('route', $route);
+// console.log('route', $route);
 </script>
 <script lang="ts">
 export default {
@@ -67,7 +67,7 @@ export default {
         transition: 0.3s;
         .scrollBar {
             width: 100%;
-            height: calc(100vh - 50px);
+            height: calc(100vh - $base-tabbar-height);
 
             .el-menu {
                 border-right: none;
@@ -81,14 +81,12 @@ export default {
         transition: .3s;
         .layout_tabber {
             width: 100%;
-            height: 50px;
+            height: $base-tabbar-height;
         }
 
         .layout_main {
-            position: absolute;
             width: 100%;
-            height: calc(100vh - 50px);
-            background-color: yellowgreen;
+            height: calc(100vh - $base-tabbar-height);
             overflow: auto;
             padding: 20px;
         }

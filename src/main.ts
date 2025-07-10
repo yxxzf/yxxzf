@@ -6,7 +6,7 @@ import 'element-plus/dist/index.css';
 import zhCn from 'element-plus/dist/locale/zh-cn.mjs';
 // 清除默认样式
 import '@/styles/reset.scss';
-import '@/styles/variable.scss';
+// import '@/styles/variable.scss';
 // @ts-expect-error SVG文件需要配置代码
 import 'virtual:svg-icons-register';
 import GloalComponent from '@/components/index';

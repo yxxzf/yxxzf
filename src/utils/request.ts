@@ -5,7 +5,7 @@ import { GET_TOKEN } from "./token";
 //利用axios的create方法，创建axios实例（其他的配置）
 const request = axios.create({
     baseURL: import.meta.env.VITE_APP_BASE_API, // 基础请求路径带上api
-    timeout: 5000 // 超时时间设置
+    timeout: 35 * 1000 // 超时时间设置
 })
 //请求拦截器
 request.interceptors.request.use(config => {

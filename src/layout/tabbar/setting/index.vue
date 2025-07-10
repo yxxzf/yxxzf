@@ -3,7 +3,8 @@
         <el-button size="small" icon="Refresh" circle @click="updateRefsh"></el-button>
         <el-button size="small" icon="FullScreen" circle @click="fullScreen"></el-button>
         <el-button size="small" icon="Setting" circle></el-button>
-        <img :src="useStore.user_info.data?.avatar" alt="" style="height: 24px;width: 24px;margin: 0 10px; border-radius: 50%;">
+        <img :src="useStore.user_info.data?.avatar" alt=""
+            style="height: 24px;width: 24px;margin: 0 10px; border-radius: 50%;">
         <!-- 下拉菜单 -->
         <el-dropdown>
             <span class="el-dropdown-link">
@@ -26,8 +27,11 @@
 import useLayOutSettingStore from '@/store/moudules/setting';
 //@ts-ignore
 import useUserStore from '@/store/moudules/user';
+import { useRouter, useRoute } from 'vue-router';
 const layOutSettingStore = useLayOutSettingStore()
 const useStore = useUserStore()
+const $router = useRouter()
+const $route = useRoute()
 //刷新按钮点击回调
 const updateRefsh = () => {
     layOutSettingStore.refresh = !layOutSettingStore.refresh;
@@ -46,8 +50,13 @@ const fullScreen = () => {
     }
 }
 // tuichu
-const layout = ()=> {
-    useStore.userLogout()
+const layout = () => {
+    useStore.userLogout().then((res) => {
+        console.log(res)
+        $router.push({ path: '/login', query: { redirect: $route.path } })
+    }).catch(error => {
+        console.log(error)
+    })
 }
 </script>
 <script lang="ts">

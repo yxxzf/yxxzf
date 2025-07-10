@@ -5,7 +5,10 @@
 </template>
 
 <script setup lang="ts">
-
+//@ts-ignore
+import request from "@/utils/request";
+request.post('/user/login', { username: 'system',
+            password: '111111'})
 </script>
 
 <style scoped>

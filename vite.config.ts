@@ -5,7 +5,6 @@ import { viteMockServe } from 'vite-plugin-mock'
 import vueDevTools from 'vite-plugin-vue-devtools'
 import path from 'path'
 
-//@ts-expect-error https://vite.dev/config/ 
 export default defineConfig(({ command, mode }) => {
     //获取各种环境下的对应的变量
     let env = loadEnv(mode, process.cwd());
@@ -36,7 +35,8 @@ export default defineConfig(({ command, mode }) => {
                     javascriptEnabled: true,
                     // additionalData: '@import "./src/styles/variable.scss";',
                     // sass1.8后已经弃用@import，使用@use导入
-                    // additionalData: '@use "@/styles/variable.scss";',
+                    // 使用as *表示将所有转发的变量、mixins等以全局命名空间引入，这样我们就可以直接使用变量而不需要命名空间前缀
+                    additionalData: '@use "@/styles/variable.scss" as *;',
                 },
             },
         },

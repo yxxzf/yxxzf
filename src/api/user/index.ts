@@ -17,4 +17,4 @@ export const reqUserInfo = () =>
 
 //退出登录
 
-// export const reqLogout = () => request.post<any, any>(API.LOGOUT_URL)
+export const reqLogout = () => request.post<any, any>(API.LOGOUT_URL)
